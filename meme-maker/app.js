@@ -4,16 +4,13 @@ const ctx = canvas.getContext("2d"); //brush
 canvas.width = 800;
 canvas.height = 800;
 
-ctx.fillRect(200, 200, 50, 200);
-ctx.fillRect(400, 200, 50, 200);
+ctx.lineWidth = 2;
 
-// code order matters
-ctx.lineWidth = 3; //making line thicker
-ctx.strokeRect(300, 300, 50, 100);
+function onClick(event) {
+    ctx.moveTo(0, 0);
+    console.log(event);
+    ctx.lineTo(event.offsetX, event.offsetY);
+    ctx.stroke();
+}
 
-ctx.fillRect(200, 200, 200, 30);
-
-ctx.moveTo(200, 200);
-ctx.lineTo(300, 100);
-ctx.lineTo(450, 200);
-ctx.fill()
+canvas.addEventListener("mousemove", onClick);
