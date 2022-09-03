@@ -18,6 +18,7 @@ canvas.height = 700;
 ctx.lineWidth = 70;
 let isPainting = false;
 let isFilling = false;
+ctx.lineCap = "round";
 
 /** onMove works whenever your mouse moved */
 function onMove(e) {
