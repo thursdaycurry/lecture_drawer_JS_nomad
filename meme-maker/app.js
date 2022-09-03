@@ -1,3 +1,4 @@
+const textInput = document.getElementById("text");
 const fileInput = document.getElementById("file");
 const modeBtn = document.getElementById("mode-btn");
 const destroyBtn = document.getElementById("destroy-btn")
@@ -94,6 +95,19 @@ function onFileChange(e) {
     };
 }
 
+function onDoubleClick(e) {
+    const text = textInput.value;
+    if (text !== "") {
+        ctx.save(); // current state is saved and can be restored later. In this cas just for lineWidth
+        ctx.lineWidth = 1;
+        ctx.font = "48px serif";
+        // ctx.strokeText(text, e.offsetX, e.offsetY);
+        ctx.fillText(text, e.offsetX, e.offsetY);
+        ctx.restore();
+    }
+}
+
+canvas.addEventListener("dblclick", onDoubleClick);
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", onMouseDown);
 canvas.addEventListener("mouseup", onMouseUp);
