@@ -15,6 +15,7 @@ const colors = [
 ]
 
 function onClick(event) {
+    ctx.beginPath()
     ctx.moveTo(0, 0);
     const color = colors[Math.floor(Math.random() * colors.length)];
     ctx.strokeStyle = color;
