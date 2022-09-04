@@ -1,3 +1,4 @@
+const saveBtn = document.getElementById("save");
 const textInput = document.getElementById("text");
 const fileInput = document.getElementById("file");
 const modeBtn = document.getElementById("mode-btn");
@@ -86,9 +87,7 @@ function onFileChange(e) {
     console.dir(e.target);
     const file = e.target.files[0];
     const url = URL.createObjectURL(file);
-    
-    // Smae as <img src=""/>
-    const image = new Image();
+    const image = new Image(); // Smae as <img src=""/>
     image.src = url;
     image.onload = function() {
         ctx.drawImage(image, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -102,10 +101,18 @@ function onDoubleClick(e) {
         ctx.save(); // current state is saved and can be restored later. In this cas just for lineWidth
         ctx.lineWidth = 1;
         ctx.font = "48px serif";
-        // ctx.strokeText(text, e.offsetX, e.offsetY);
+        // or you can do -> ctx.strokeText(text, e.offsetX, e.offsetY);
         ctx.fillText(text, e.offsetX, e.offsetY);
         ctx.restore();
-    }
+    };
+}
+
+function onSaveClick() {
+    const url = canvas.toDataURL(); // convert picture content -> url data
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "myDrawing.png";
+    a.click();
 }
 
 canvas.addEventListener("dblclick", onDoubleClick);
@@ -120,3 +127,4 @@ modeBtn.addEventListener("click", onModeClick);
 destroyBtn.addEventListener("click", onDestroyClick);
 eraserBtn.addEventListener("click", onEraserClick);
 fileInput.addEventListener("change", onFileChange);
+saveBtn.addEventListener("click", onSaveClick);

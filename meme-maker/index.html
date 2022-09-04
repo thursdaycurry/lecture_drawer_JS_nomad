@@ -8,13 +8,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- window of canvas api  -->
-    <canvas></canvas>
-    <!-- input range btw 1-10, default value 5. Available to control .5 units like 3.5, 3, 8.5 -->
-    <input type="range" min="1" max="10" value="5" id="line-width" step="0.1">
-    <input type="color" id="color">
 
-    <div>
+    <!-- Colors -->
+    <div class="color-options">
+        <input type="color" id="color">
         <!-- data-x: Useful attr for grabbing data with JS -->
         <div class="color-option" style="background-color: #cd84f1" data-color="#cd84f1"></div>
         <div class="color-option" style="background-color: #ff4d4d" data-color="#ff4d4d"></div>
@@ -25,13 +22,29 @@
         <div class="color-option" style="background-color: #18dcff" data-color="#18dcff"></div>
         <div class="color-option" style="background-color: #7d5fff" data-color="#7d5fff"></div>
         <div class="color-option" style="background-color: #4b4b4b" data-color="#4b4b4b"></div>
+    </div>
+    
+    <!-- window of canvas api  -->
+    <canvas></canvas>
+    
+    <div class="btns">
+        <!-- input range btw 1-10, default value 5. Available to control .5 units like 3.5, 3, 8.5 -->
+        <input type="range" min="1" max="10" value="5" id="line-width" step="0.1">
+        
         <button id="mode-btn">Fill</button>
         <button id="destroy-btn">Destroy</button>
         <button id="eraser-btn">Erase</button>
-        <input type="file" accept="image/*" id="file"> 
-        <input type="text" placeholder="Write and double click" id="text">
-    </div>
 
+        <!-- Basically, label with same for value = element with same id -->
+        <!-- When label(for 'file') is clicked, elemenet(id 'file') is triggered -->
+        <label for="file">
+            Upload Photos
+            <input type="file" accept="image/*" id="file"> 
+        </label>
+
+        <input type="text" placeholder="Write and double click" id="text">
+        <button id="save">Save image</button>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
